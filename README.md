@@ -1,2 +1,2 @@
-# projectmj
-Wow Classic Project Madow Johnzen
+# Wow Class Project Madow/Johnzen
+
