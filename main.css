@@ -3,7 +3,7 @@
 }
 
 .masthead.segment {
-    min-height: 700px;
+    min-height: 400px;
     padding: 1em 0;
 }
 .masthead .logo.item img {
@@ -66,8 +66,8 @@
 
 .ui.inverted.header.bangers {
     font-family: Bangers, Lato, serif;
-    font-size: 8em;
-    margin-top: 1em;
+    font-size: 6em;
+    margin-top: 0.5em;
     color: #ffbd81;
 }
 
