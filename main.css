@@ -24,11 +24,16 @@
 }
 
 .ui.vertical.stripe {
-    padding: 8em 0;
+    padding: 3em 0;
 }
 .ui.vertical.stripe h3 {
     font-size: 2em;
 }
+
+.ui.button.applynow {
+    margin-top: 15em;
+}
+
 .ui.vertical.stripe .button + h3,
 .ui.vertical.stripe p + h3 {
     margin-top: 3em;
@@ -51,6 +56,10 @@
     padding-bottom: 5em;
 }
 
+p {
+    margin-bottom: 0.4em;
+}
+
 .footer.segment {
     padding: 5em 0;
 }
@@ -60,7 +69,7 @@
 }
 
 .ui.segment.bgimage {
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url("bg.jpg") center;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url("bg.png") center;
     background-size: cover;
 }
 
