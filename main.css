@@ -1,3 +1,8 @@
+body {
+    background: #141516;
+    color: #FFFFFF
+}
+
 .masthead.segment {
     min-height: 400px;
     padding: 1em 0;
@@ -14,6 +19,11 @@
     font-size: 4em;
     font-weight: normal;
 }
+
+.ui.header {
+    color: #FFFFFF
+}
+
 .masthead h2 {
     font-size: 1.7em;
     font-weight: normal;
