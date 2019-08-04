@@ -1,0 +1,7 @@
+---
+services:
+  website:
+    image: traefik
+
+  node:
+    image: node
