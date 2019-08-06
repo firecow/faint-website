@@ -41,15 +41,28 @@
                 $(container).appendTo(segment);
                 $(row).appendTo(container);
                 $(column).appendTo(row);
-                // $('#masthead').after(segment);
+                //$('#masthead').after(segment);
 
+
+                $(doc).find("span").each((i, e) => {
+                    const parent = $(e).parent();
+                    const text = $(e).text();
+                    $(e).removeAttr('id');
+                    $(e).removeAttr('style');
+                    $(e).remove();
+                    parent.text(text);
+                });
                 $(doc.body).children().each((i, e) => {
                     const tagName = $(e).prop("tagName");
+
+                    if (["H1", "H2", "H3", "H4", "H5", "H6"].includes(tagName)) {
+                        $(e).addClass(["ui", "header"]);
+                    }
 
                     $(e).removeAttr('id');
                     $(e).removeAttr('style');
 
-                    console.log(tagName, $(e).find('span').text());
+                    $(column).append(e);
                 });
             });
 
