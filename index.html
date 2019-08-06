@@ -15,21 +15,59 @@
     <link rel="stylesheet" href="main.css">
 
     <script>
+        function onload() {
+            const folderId = '1rc-MDTHwlM2VgBRMG61kArovjLU_I0m3';
+            const apiKey = 'AIzaSyDtSShzyBpMDIpmE8o3alMtNxHdZb33p-E';
+            fetch(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}`).then(data => {
+                return data.json();
+            }).then(d => {
+                d.files.forEach((f) => {
+                    // console.log(f.id);
+                });
+            });
+
+            fetch(`https://www.googleapis.com/drive/v2/files/1RMYQpL83PkWVjw3Zc99NciTxm4lsa-RFo0h7kXBQ_wU/export?mimeType=text%2Fhtml&key=AIzaSyDtSShzyBpMDIpmE8o3alMtNxHdZb33p-E`).then(data => {
+                return data.text();
+            }).then(d => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(d, 'text/html');
+
+                const segment = jQuery.parseHTML('<div class="ui vertical stripe segment"></div>');
+                const container = jQuery.parseHTML('<div class="ui middle aligned stackable grid container"></div>');
+                const row = jQuery.parseHTML('<div class="row"></div>');
+                const column = jQuery.parseHTML('<div class="eight wide column"></div>');
+
+                $(container).appendTo(segment);
+                $(row).appendTo(container);
+                $(column).appendTo(row);
+                // $('#masthead').after(segment);
+
+                $(doc.body).children().each((i, e) => {
+                    const tagName = $(e).prop("tagName");
+
+                    $(e).removeAttr('id');
+                    $(e).removeAttr('style');
+
+                    console.log(tagName, $(e).find('span').text());
+                });
+            });
+
+        }
+
         function openApplicationForm() {
             window.open('https://forms.gle/PxdXUDzK2n4Q4eAQ6');
         }
     </script>
 </head>
-<body>
+<body onload="onload()">
 
 <!-- Page Contents -->
-<div class="pusher">
-    <div class="ui inverted vertical masthead center aligned segment bgimage">
+<div id="pusher" class="pusher">
+    <div id="masthead" class="ui inverted vertical masthead center aligned segment bgimage">
         <div class="ui text container">
             <div class="ui huge blue button applynow" onclick="openApplicationForm();">Apply now <i class="right arrow icon"></i></div>
         </div>
     </div>
-
     <div class="ui vertical stripe segment">
         <div class="ui middle aligned stackable grid container">
             <div class="row">
