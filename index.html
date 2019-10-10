@@ -8,7 +8,6 @@
 
     <!-- Site Properties -->
     <title>Faint</title>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/async/3.1.0/async.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
@@ -17,59 +16,6 @@
     <link rel="stylesheet" href="main.css">
 
     <script>
-        function parseGDocHtml(html, cb) {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-
-            const segment = jQuery.parseHTML('<div class="ui vertical stripe segment"></div>');
-            const container = jQuery.parseHTML('<div class="ui middle aligned stackable grid container"></div>');
-            const row = jQuery.parseHTML('<div class="row"></div>');
-            const column = jQuery.parseHTML('<div class="eight wide column"></div>');
-
-            $(container).appendTo(segment);
-            $(row).appendTo(container);
-            $(column).appendTo(row);
-            // $(segment).insertBefore('#footer');
-
-            $(doc).find("span,p,h1,h2,h3,h4,h5,h6").each((i, e) => {
-                $(e).removeAttr('id');
-                $(e).removeAttr('style');
-            });
-
-            $(doc).find("span").each((i, e) => {
-                const parent = $(e).parent();
-                const text = $(e).text();
-
-                $(e).remove();
-                parent.text(text);
-            });
-            $(doc.body).children().each((i, e) => {
-                const tagName = $(e).prop("tagName");
-                if (["H1", "H2", "H3", "H4", "H5", "H6"].includes(tagName)) {
-                    $(e).addClass(["ui", "header"]);
-                }
-                $(column).append(e);
-            });
-
-
-            cb();
-        }
-
-        function onload() {
-            const folderId = '1rc-MDTHwlM2VgBRMG61kArovjLU_I0m3';
-            const apiKey = 'AIzaSyDtSShzyBpMDIpmE8o3alMtNxHdZb33p-E';
-
-
-            $.get(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}`, d => {
-                const promises = [];
-                d.files.sort((a, b) => a.name.localeCompare(b.name));
-                d.files.forEach((f) => {
-                    promises.push((cb) => { $.get(`https://www.googleapis.com/drive/v3/files/${f.id}/export?mimeType=text%2Fhtml&key=${apiKey}`, html => parseGDocHtml(html, cb)); })
-                });
-                async.series(promises);
-            });
-        }
-
         function openApplicationForm() {
             window.open('https://discord.gg/m6yu9Dd');
         }
@@ -84,20 +30,7 @@
             <div class="ui huge red button applynow" onclick="openApplicationForm();">Apply on Discord <i class="right arrow icon"></i></div>
         </div>
     </div>
-    <div class="ui vertical stripe segment">
-        <div class="ui middle aligned stackable grid container">
-            <div class="row">
-                <div class="eight wide column">
-                    <h3 class="ui header">&ltFaint&gt Horde EU (Shazzrah)<br>Competitive WoW Classic Guild</h3>
-                    <p>We're all eagerly waiting for the release of Classic 27th August to replay vanilla WoW. With the launch date drawing close, we now want to go "Full H.A.M." and steamroll through Azeroth as a highly competitive Horde guild. Apply to us for experiencing WoW in a professional and ambitious atmosphere!</p>
-                </div>
-                <div class="six wide right floated column">
-                    <img src="horde.jpg" class="ui large bordered rounded image">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="ui vertical stripe segment">
+     <div class="ui vertical stripe segment">
         <div class="ui middle aligned stackable grid container">
             <div class="row">
                 <div class="six wide left floated column">
