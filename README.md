@@ -1,2 +1,2 @@
-# Wow Class Project Madow/Johnzen
+# Faint's, a wow classic guild website
 
