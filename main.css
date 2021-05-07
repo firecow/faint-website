@@ -37,7 +37,7 @@ body {
 }
 
 .ui.button.applynow {
-    margin-top: 15em;
+    margin-top: 19em;
 }
 
 .ui.vertical.stripe .button + h3,
@@ -75,7 +75,7 @@ p {
 }
 
 .ui.segment.bgimage {
-    background: url("bg.png") center;
+    background: url("banner.png") center;
     background-size: cover;
 }
 
